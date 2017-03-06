@@ -8,8 +8,11 @@ public class FindCommonElement {
     int bI = 0;
 
     for (int i = 0; i < arrA.length; i++) {
-      while (arrA[i] > arrB[bI] && bI < arrA.length)
+      while (bI < arrB.length && arrA[i] > arrB[bI])
         bI++;
+
+      if (bI == arrB.length)
+        break;
 
       if (arrA[i] == arrB[bI]) {
         res.add(arrA[i]);
@@ -22,7 +25,7 @@ public class FindCommonElement {
   }
 
   public static void main(String[] args) {
-    int[] arrA = {1,2,3,4,5,6};
+    int[] arrA = {1,2,3,4,5,6,7,10,14};
     int[] arrB = {3,5,6,7,9,10};
     List<Integer> results = findCommonElement(arrA, arrB);
     System.out.println(results);
