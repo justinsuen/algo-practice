@@ -11,9 +11,21 @@ class Solution(object):
         :type root: TreeNode
         :rtype: TreeNode
         """
-        if root == None:
-            return None
 
-        root.right, root.left = self.invertTree(root.left), self.invertTree(root.right)
+        # 1. Recursion
+        # if root == None:
+        #     return None
+        #
+        # root.right, root.left = self.invertTree(root.left), self.invertTree(root.right)
+        #
+        # return root
 
+        # 2. DFS Stack
+        stack = [root]
+        while stack:
+            curr = stack.pop()
+            if curr:
+                curr.left, curr.right = curr.right, curr.left
+                stack.append(curr.right)
+                stack.append(curr.left)
         return root
